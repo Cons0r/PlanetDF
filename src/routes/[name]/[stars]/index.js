@@ -1,10 +1,27 @@
 import prisma from '$lib/prisma'
 
 export async function get({ params }) {
-    prisma.rate.create({
-        data: {
-            uuid: params.name,
-            num: params.stars
+    try {
+        await prisma.rate.create({
+            data: {
+                uuid: params.name,
+                num: parseInt(params.stars)
+            }
+        })
+    } catch(e) {
+        if(e.code === 'P2002') {
+            // unique field not uniqe
+            await prisma.rate.update({
+                where: {
+                    uuid: params.name
+                },
+                data: {
+                    num: parseInt(params.stars)
+                }
+            })
         }
-    })
+    }
+    return {
+        code: 200
+    }
 }
