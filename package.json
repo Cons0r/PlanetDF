@@ -7,6 +7,7 @@
 		"build": "svelte-kit build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
+		"postinstall": "prisma generate",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
@@ -36,6 +37,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"nightwind": "^1.1.12"
+		"@prisma/client": "^3.12.0",
+		"nightwind": "^1.1.12",
+		"prisma": "^3.12.0"
 	}
 }
