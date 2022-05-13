@@ -15,6 +15,13 @@ const config = {
 		adapter: adapter({
 			out: "out"
 		}),
+		vite: {
+			build: {
+				rollupOptions: {
+					external: ['adler-32']
+				}
+			}
+		}
 	}
 };
 
