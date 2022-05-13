@@ -2,8 +2,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .tleft{
     position:absolute;
     top:0;
     right:0;
+}
+
+form input {
+    @apply disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+    invalid:border-pink-500 invalid:text-pink-600
+    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+}
+#wrap {
+    --toastContainerTop: 0.5rem;
+    --toastContainerRight: 0.5rem;
+    --toastContainerBottom: auto;
+    --toastContainerLeft: 0.5rem;
+    --toastWidth: 100%;
+    --toastMinHeight: 2rem;
+    --toastPadding: 0 0.5rem;
+    --toastBorderRadius: 0.375rem;
+    font-size: 0.875rem;
+  }
+  @media (min-width: 40rem) {
+    #wrap {
+      --toastContainerRight: auto;
+      --toastContainerLeft: calc(50vw - 20rem);
+      --toastWidth: 40rem;
+    }
+  }
+
+._toastItem {
+    @apply rounded-md
+}
+
+._toastBtn {
+    @apply transition-transform hover:scale-110
 }

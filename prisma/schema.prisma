@@ -10,9 +10,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Plot {
-  id BigInt @id
+model User {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  username   String   @unique
+  hashed     String
+  mclinked   Boolean  @default(false)
+  mclinkuuid String?
+  votes      Vote[]
+  plots      Plot[]
+}
 
+model Plot {
+  id     BigInt @id
+  node   Node
+  votes  Vote[]
+  owner  User   @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model Vote {
+  id      Int     @id @default(autoincrement())
+  stars   Int
+  message String?
+  plot    Plot    @relation(fields: [plotId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+  plotId  BigInt
+  userId  String
 }
 
 enum Node {
