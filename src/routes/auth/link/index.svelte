@@ -2,7 +2,7 @@
     import * as libmojang from '$lib/mojang';
     import ListCard from '$lib/ListCard.svelte';
     import ListCardItem from '$lib/ListCardItem.svelte';
-    import adler32 from 'adler-32'
+    import adler32 from '$lib/adler32'
     import { writable } from 'svelte/store';
     let val = writable('')
     let valid = false;
@@ -38,7 +38,7 @@
             <ListCardItem>
                 <span class:text-rose-500={!valid} class="w-full text-center">
                 {#if valid}
-                    {adler32?.str($val)}
+                    {adler32($val)}
                 {:else}
                     [INVALID]
                 {/if}
@@ -47,7 +47,7 @@
             {#if valid}
             <ListCardItem>
                 <span class="text-gray-500">
-                    Join plot 4533 to and enter type @{adler32?.str($val)} in chat
+                    Join plot 4533 to and enter type @{adler32($val)} in chat
                 </span>
             </ListCardItem>
             {/if}
