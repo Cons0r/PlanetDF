@@ -1,10 +1,14 @@
 /// <reference types="@sveltejs/kit" />
 declare namespace App {
     interface Session {
-        user?: unknown
+        user?: {
+            username: string
+        }
     }
 
     interface Locals {
-        user?: unknown
+        user?: {
+            username: string
+        }
     }
 }

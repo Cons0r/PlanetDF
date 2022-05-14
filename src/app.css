@@ -3,10 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.tleft{
-    position:absolute;
-    top:0;
-    right:0;
+:root {
+    --template-color-light: #fff;
+    --template-color-dark: #1e2022;
 }
 
 form input {
@@ -14,6 +13,7 @@ form input {
     invalid:border-pink-500 invalid:text-pink-600
     focus:invalid:border-pink-500 focus:invalid:ring-pink-500
 }
+
 #wrap {
     --toastContainerTop: 0.5rem;
     --toastContainerRight: 0.5rem;
@@ -39,4 +39,8 @@ form input {
 
 ._toastBtn {
     @apply transition-transform hover:scale-110
+}
+
+.logoicon {
+    @apply h-4 w-4 inline transition-all hover:-rotate-12
 }

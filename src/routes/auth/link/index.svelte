@@ -16,7 +16,8 @@
         }
     }
     val.subscribe(async(ign)=>{
-        valid = ign.length && libmojang.valid(ign) && await userexists(ign)
+        // valid = ign.length && libmojang.valid(ign) && await userexists(ign)
+        valid = true;
         console.log(valid)
     })
 </script>
@@ -27,20 +28,19 @@
     </div>
   
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 text-center">
         <ListCard>
+            <input bind:value={$val} class="w-fit" type="text" placeholder="Your Minecraft username">
+
             <ListCardItem>
-                <input bind:value={$val} class="w-full" type="text" placeholder="Your Minecraft username">
+                Your login code is:
             </ListCardItem>
             <ListCardItem>
-                Your Code is:
-            </ListCardItem>
-            <ListCardItem>
-                <span class:text-rose-500={!valid} class="w-full text-center">
+                <span class:text-rose-500={!valid} class="w-full text-center text-2xl">
                 {#if valid}
                     {adler32($val)}
                 {:else}
-                    [INVALID]
+                    00000000
                 {/if}
                 </span>
             </ListCardItem>
@@ -48,6 +48,7 @@
             <ListCardItem>
                 <span class="text-gray-500">
                     Join plot 4533 to and enter type @{adler32($val)} in chat
+                    Reload the site to check if you have been registered
                 </span>
             </ListCardItem>
             {/if}
