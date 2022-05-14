@@ -3,7 +3,7 @@
 
 async function getUUID(username: string): Promise<string | never> {
 	if (!valid(username)) return Promise.reject(`${username} is an invalid username`);
-	const response = await fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
+	const response = await fetch(`/api/mojang/${username}.json`)
     console.log(await response.body)
 	if (!response.ok) return Promise.reject(`${username} does not exist`);
 	const json = await response.json();

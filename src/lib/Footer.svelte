@@ -4,7 +4,6 @@
     var yeartext = '2022';
     export const creation = new Date(2022, 5, 13, 8, 0, 55); // Don't ask.
     let currdate = new Date()
-    console.log(creation)
     if(creation.getFullYear() === currdate.getFullYear()) {
         yeartext = creation.getFullYear().toString()
     } else {

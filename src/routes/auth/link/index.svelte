@@ -11,14 +11,14 @@
             await libmojang.getUUID(ign)
             return true
         } catch(e) {
-            console.log(e)
+            // usually an End Of JSON error, otherwise something has gone seriously wrong
             return false
         }
     }
-    val.subscribe(async(ign)=>{
-        // valid = ign.length && libmojang.valid(ign) && await userexists(ign)
-        valid = true;
-        console.log(valid)
+    val.subscribe(async (ign) => {
+        
+        valid = ign.length && libmojang.valid(ign) && await userexists(ign)
+        // valid = true;
     })
 </script>
 
@@ -45,12 +45,16 @@
                 </span>
             </ListCardItem>
             {#if valid}
-            <ListCardItem>
-                <span class="text-gray-500">
-                    Join plot 4533 to and enter type @{adler32($val)} in chat
-                    Reload the site to check if you have been registered
-                </span>
-            </ListCardItem>
+                <ListCardItem>
+                    <span class="text-gray-500">
+                        Join plot 4533 to and enter type @{adler32($val)} in chat
+                        Reload the site to check if you have been registered
+                    </span>
+                </ListCardItem>
+            {:else}
+                <ListCardItem>
+                    <span class="text-gray-500 text-xs">The username you have entered may not exist</span>
+                </ListCardItem>
             {/if}
         </ListCard>
       </div>
